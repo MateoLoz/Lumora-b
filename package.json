@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"tsc",
     "develop": "nodemon ./src/index.ts",
+    "start":"node dist/index.js",
     "supabase:login": "supabase login",
     "supabase:gen": "supabase gen types typescript --project-id gnawilthlinxwfnsupuz --schema public > src/types/supabase.ts"
   },
