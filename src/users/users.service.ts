@@ -52,8 +52,8 @@ export async function getUserByName(payload: IUserCreate): Promise<boolean> {
 
 export async function createUser(payload: IUserCreate) {
   const { data, error } = await supabase.from("users").insert(payload).select();
-
-  return { data, error };
+  if (error) throw error;
+  return data;
 }
 
 export async function updateUser(id: number, payload: IUserUpdate) {
