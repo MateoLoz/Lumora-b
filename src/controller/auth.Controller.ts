@@ -16,6 +16,13 @@ export function login(req: Request, res: Response) {
   const { accessToken, refreshToken } = generateTokens(user);
   refreshTokens.push(refreshToken);
 
+  res.cookie("access_token", accessToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    path: "/",
+  });
+
   res.json({ accessToken, refreshToken });
 }
 

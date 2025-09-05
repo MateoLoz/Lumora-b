@@ -1,0 +1,9 @@
+### POST users
+POST http://localhost:3035/api/users/createAccount
+Content-Type: application/json
+
+{
+  "user_name": "Mateoloz25",
+  "email": "mateolozguardia225@gmail.com",
+  "password": "MateoLoz1423_"
+}
