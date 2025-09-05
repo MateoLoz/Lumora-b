@@ -4,6 +4,7 @@ import { WebSocketServer } from "ws";
 import cors from "cors";
 import "dotenv/config";
 import AppRouter from "./router/app.router";
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,4 +1,4 @@
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const ACCESS_SECRET = process.env.ACCESS_SECRET as string;
 const REFRESH_SECRET = process.env.REFRESH_SECRET as string;
