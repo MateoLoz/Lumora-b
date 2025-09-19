@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { LoginDto } from "../auth/auth.dto";
 import {
   generateTokens,
   verifyRefresh,
@@ -33,7 +34,7 @@ export function refresh(req: Request, res: Response) {
 
   try {
     const user = verifyRefresh(token);
-    const { accessToken } = generateTokens({ password: user.password ,  email: user.email });
+    const { accessToken } = generateTokens({ id: user.id ,  email: user.email, name:user.name });
     res.json({ accessToken });
   } catch {
     return res.sendStatus(403);
@@ -51,7 +52,7 @@ export function userIsLogged(req: Request, res: Response) {
   if (!token) return res.status(200).json({ loggedIn: false });
   try {
     const user = verifyAccess(token);
-    res.json({ loggedIn: true, user: { password: user.password, email: user.email } });
+    res.json({ loggedIn: true, user: {  id: user.id ,  email: user.email, name:user.name }  });
   } catch {
     res.status(200).json({ loggedIn: false });
   }
