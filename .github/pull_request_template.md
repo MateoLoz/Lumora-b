@@ -1,40 +1,30 @@
-## 📖 Description
-Explica brevemente qué cambios introduces y por qué.  
-Ejemplo: "Se agregó validación en el formulario de registro para mejorar la UX".
+# Related Issue
+- issue goes here
 
----
 
-## ✅ Changes
-- [ ] Nueva funcionalidad
-- [ ] Corrección de bug
-- [ ] Refactor de código
-- [ ] Actualización de dependencias
-- [ ] Documentación
+# Proposed Changes
+- change 1
+- change 2
 
-Describe los cambios principales con bullets.  
-Ejemplo:
-- Añadí validación de email en frontend
-- Mensajes de error traducidos (es/en)
-- Refactor del hook de autenticación
 
----
+# Additional Info
+- any additional information or context.
 
-## 🧪 How to Test
-Pasos claros para testear la PR:  
-1. Ir a `/register`
-2. Completar el formulario con un email inválido
-3. Verificar que aparece el error correspondiente
 
----
+# Checklist
+- [] Test
+- [] Translations
+- [] Documentation
 
-## 🔗 Issues 
-Closes # (ID)  
-Relates to # (ID)  
 
----
+# Screenshots
 
-## ⚠️ Aditional Notes
-Agrega info extra si aplica:  
-- 🚨 Breaking changes  
-- 📌 Dependencias nuevas  
-- 🔒 Consideraciones de seguridad
+Original            | Updated
+:------------------------:|:------------------------:
+** original screenshot ** | ** updated screenshot ** 
+
+
+# How to Test
+1. steps
+2. go
+3. here

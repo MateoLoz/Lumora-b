@@ -9,21 +9,22 @@ import {
 let refreshTokens: string[] = [];
 
 export function login(req: Request, res: Response) {
-  const { email, password } = req.body;
+  const  data : LoginDto  = req.body;
+   console.log(data);
+  // const user: TokenPayload = { id: 1 };
 
-  const user: TokenPayload = { id: 1, email };
+  //const { accessToken, refreshToken } = generateTokens(user);
+  //refreshTokens.push(refreshToken);
 
-  const { accessToken, refreshToken } = generateTokens(user);
-  refreshTokens.push(refreshToken);
+  // res.cookie("access_token", accessToken, {
+  //   httpOnly: true,
+  //   secure: process.env.NODE_ENV === "production",
+  //   sameSite: "strict",
+  //   path: "/",
+  // });
 
-  res.cookie("access_token", accessToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    path: "/",
-  });
-
-  res.json({ accessToken, refreshToken });
+  // res.json({ accessToken, refreshToken });
+  res.json('hola');
 }
 
 export function refresh(req: Request, res: Response) {
@@ -32,7 +33,7 @@ export function refresh(req: Request, res: Response) {
 
   try {
     const user = verifyRefresh(token);
-    const { accessToken } = generateTokens({ id: user.id, email: user.email });
+    const { accessToken } = generateTokens({ password: user.password ,  email: user.email });
     res.json({ accessToken });
   } catch {
     return res.sendStatus(403);
@@ -50,7 +51,7 @@ export function userIsLogged(req: Request, res: Response) {
   if (!token) return res.status(200).json({ loggedIn: false });
   try {
     const user = verifyAccess(token);
-    res.json({ loggedIn: true, user: { id: user.id, email: user.email } });
+    res.json({ loggedIn: true, user: { password: user.password, email: user.email } });
   } catch {
     res.status(200).json({ loggedIn: false });
   }

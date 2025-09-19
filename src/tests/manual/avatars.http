@@ -1,0 +1,4 @@
+### GET Template Avatars
+
+GET  http://localhost:3035/api/avatars/
+Content-Type: application/json

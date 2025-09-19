@@ -4,12 +4,13 @@ const ACCESS_SECRET = process.env.ACCESS_SECRET as string;
 const REFRESH_SECRET = process.env.REFRESH_SECRET as string;
 
 export interface TokenPayload {
-  id: number;
+  id:number;
   email: string;
+  name: string;
 }
 
 export function generateTokens(payload: TokenPayload) {
-  const accessToken = jwt.sign(payload, ACCESS_SECRET, { expiresIn: "15m" });
+  const accessToken = jwt.sign(payload, ACCESS_SECRET, { expiresIn: "1h" });
   const refreshToken = jwt.sign(payload, REFRESH_SECRET, { expiresIn: "7d" });
 
   return { accessToken, refreshToken };

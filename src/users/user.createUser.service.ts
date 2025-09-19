@@ -7,11 +7,11 @@ import { CreateUser } from "../validators/users.validator";
 export async function createUserService(payload: CreateUser) {
 
   if (await getUserByEmail(payload)) {
-    throw new ConflictError(`Email ${payload.email} already in use`);
+    throw new ConflictError(`Email ${payload.email} already in use`, 'EMAIL_IN_USE', 409);
   }
 
   if (await getUserByName(payload)) {
-    throw new ConflictError(`Username ${payload.user_name} already in use`);
+    throw new ConflictError(`Username ${payload.user_name} already in use`,'USERNAME_IN_USE', 409);
   }
 
 
