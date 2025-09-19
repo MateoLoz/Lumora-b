@@ -17,16 +17,22 @@ const server = createServer(app);
 const wss = new WebSocketServer({ server });
 const port = 3035;
 
+
+
 wss.on("connection", (ws) => {
   ws.on("message", (msg) => {
     wss.clients.forEach((client) => {
       if (client !== ws && client.readyState === 1) client.send(msg);
     });
   });
+  ws.send('hello from web socket!');
 });
 
-app.get("/", (_, res) => res.send("Hola Express + WS"));
+app.get("/", (_, res) => res.json("Hola Express + WS"));
 
 app.use("/api", AppRouter);
 
 app.listen(process.env.PORT, () => console.log(`runing or port ${port}`));
+
+
+export default app

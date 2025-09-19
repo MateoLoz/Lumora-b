@@ -100,6 +100,41 @@ export type Database = {
           },
         ]
       }
+      refresh_tokens: {
+        Row: {
+          created_at: string | null
+          expire_at: string | null
+          id: number
+          revoked: boolean | null
+          TOKEN: string
+          user_id: number
+        }
+        Insert: {
+          created_at?: string | null
+          expire_at?: string | null
+          id?: number
+          revoked?: boolean | null
+          TOKEN?: string
+          user_id: number
+        }
+        Update: {
+          created_at?: string | null
+          expire_at?: string | null
+          id?: number
+          revoked?: boolean | null
+          TOKEN?: string
+          user_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "refresh_tokens_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       room_items: {
         Row: {
           created_at: string
@@ -253,6 +288,44 @@ export type Database = {
           },
         ]
       }
+      template_notes: {
+        Row: {
+          assigned_to: number | null
+          content: string | null
+          created_at: string
+          id: number
+          position: Json | null
+          status: string | null
+          title: string | null
+        }
+        Insert: {
+          assigned_to?: number | null
+          content?: string | null
+          created_at?: string
+          id?: number
+          position?: Json | null
+          status?: string | null
+          title?: string | null
+        }
+        Update: {
+          assigned_to?: number | null
+          content?: string | null
+          created_at?: string
+          id?: number
+          position?: Json | null
+          status?: string | null
+          title?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "template_notes_assigned_to_fkey"
+            columns: ["assigned_to"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       templates_avatars: {
         Row: {
           avatar_name: string | null
@@ -262,6 +335,7 @@ export type Database = {
           id: number
           saga: string | null
           type: string | null
+          used: number | null
         }
         Insert: {
           avatar_name?: string | null
@@ -271,6 +345,7 @@ export type Database = {
           id?: number
           saga?: string | null
           type?: string | null
+          used?: number | null
         }
         Update: {
           avatar_name?: string | null
@@ -280,6 +355,7 @@ export type Database = {
           id?: number
           saga?: string | null
           type?: string | null
+          used?: number | null
         }
         Relationships: []
       }

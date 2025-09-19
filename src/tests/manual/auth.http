@@ -1,0 +1,10 @@
+### POST login users
+
+POST http://localhost:3035/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "mateolozguardia@gmail.com",
+  "password": "Mateo1423_"
+}
+
