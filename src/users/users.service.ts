@@ -1,3 +1,4 @@
+import { LoginDto } from "../auth/auth.dto";
 import { supabase } from "../lib/supabaseClient";
 import { toUsersDTOs } from "./users.mapper";
 import { IUserCreate, IUserUpdate } from "./users.types";
@@ -26,15 +27,14 @@ export async function getUsersCount(): Promise<number> {
   return count || 0;
 }
 
-export async function getUserByEmail(payload: IUserCreate): Promise<boolean> {
+export async function getUserByEmail(payload: IUserCreate | LoginDto) {
   const { data, error } = await supabase
     .from("users")
     .select("*")
     .eq("email", payload.email)
     .maybeSingle();
-  console.log(data);
   if (error) throw error;
-  if (data) return true;
+  if (data) return data;
   return false;
 }
 
